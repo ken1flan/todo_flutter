@@ -22,6 +22,13 @@
 
 ## タスク・PR管理
 - すべての変更はプルリクエスト（PR）経由で行う
+- PR作成時は、立てた計画（目的・主な変更点・レビューポイント等）をトップコメントに簡潔にまとめて添付する
+- プッシュ前に、CI（flutter_ci.yml）で実行している以下の内容をローカルでも必ず確認する
+    - 依存関係のインストール（flutter pub get）
+    - フォーマットチェック（dart format --set-exit-if-changed .）
+    - 静的解析（flutter analyze）
+    - テスト実行（flutter test）
+    - パッケージのアップデート確認（flutter pub outdated）
 - IssueやPRは小さく分割し、こまめにレビュー
 - mainブランチは常にビルド可能な状態を維持
 
