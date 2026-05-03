@@ -11,7 +11,7 @@ class Todos extends Table {
 
 @DriftDatabase(tables: [Todos])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase(QueryExecutor e) : super(e);
+  AppDatabase(super.e);
 
   @override
   int get schemaVersion => 1;
