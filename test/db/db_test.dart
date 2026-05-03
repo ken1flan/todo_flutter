@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:drift/drift.dart';
+
 import 'package:drift/native.dart';
-import 'package:todo_flutter/lib/db/database.dart';
+import 'package:todo_flutter/db/database.dart';
 
 void main() {
   late AppDatabase db;
@@ -34,7 +34,7 @@ void main() {
     // Update
     await db
         .update(db.todos)
-        .replace(TodosData(id: id, title: 'Updated', completed: true));
+        .replace(Todo(id: id, title: 'Updated', completed: true));
     final todo = (await db.select(db.todos).get()).first;
     expect(todo.title, 'Updated');
     expect(todo.completed, true);
@@ -47,7 +47,7 @@ void main() {
     // Delete
     await db
         .delete(db.todos)
-        .delete(TodosData(id: id, title: 'Delete Todo', completed: false));
+        .delete(Todo(id: id, title: 'Delete Todo', completed: false));
     final todos = await db.select(db.todos).get();
     expect(todos.isEmpty, true);
   });

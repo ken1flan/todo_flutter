@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 class Todo {
   int id;
@@ -49,7 +49,11 @@ class TodoRepository {
   }
 
   Todo? getTodoById(int id) {
-    return _todos.firstWhere((todo) => todo.id == id, orElse: () => null);
+    try {
+      return _todos.firstWhere((todo) => todo.id == id);
+    } catch (_) {
+      return null;
+    }
   }
 
   // Update
@@ -69,6 +73,8 @@ class TodoRepository {
 
   // Delete
   bool deleteTodo(int id) {
-    return _todos.removeWhere((todo) => todo.id == id) > 0;
+    final before = _todos.length;
+    _todos.removeWhere((todo) => todo.id == id);
+    return _todos.length < before;
   }
 }
