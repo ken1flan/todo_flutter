@@ -9,14 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:todo_flutter/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
+    expect(find.byKey(const ValueKey('counter')), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
     // Tap the '+' icon and trigger a frame.
@@ -25,6 +26,6 @@ void main() {
 
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byKey(const ValueKey('counter')), findsOneWidget);
   });
 }

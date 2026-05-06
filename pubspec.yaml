@@ -37,6 +37,7 @@ dependencies:
   drift: ^2.16.0
   drift_flutter: ^0.2.8
   sqlite3_flutter_libs: ^0.5.21
+  flutter_riverpod: ^2.5.0
 
 dev_dependencies:
   flutter_test:
